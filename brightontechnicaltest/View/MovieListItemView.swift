@@ -8,27 +8,32 @@
 import SwiftUI
 
 struct MovieListItem: View {
+    
+    @State var movie: Movie
+    
     var body: some View {
         HStack (alignment: .top){
-            Rectangle()
-                .frame(maxWidth: 120, maxHeight: 200)
+            AsyncImage(url: URL(string: movie.poster)) { image in
+                image.resizable()
+                .frame(maxWidth: 60, maxHeight: 100)
+            }placeholder: {
+                ProgressView()
+            }
+            .background(Color(uiColor: .systemGray3))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(.trailing)
             
             VStack (alignment: .leading){
-                Text("Judul Film")
+                Text(movie.title)
                     .padding(.bottom, 2)
-                    .font(.title)
+                    .font(.headline)
                     .fontWeight(.semibold)
-                Text("Tahun")
+                Text(movie.year)
                     .font(.subheadline)
                     .foregroundStyle(.gray)
             }
             Spacer()
         }
-        .padding()
         .frame(maxHeight: 180)
     }
-}
-
-#Preview {
-    MovieListItem()
 }

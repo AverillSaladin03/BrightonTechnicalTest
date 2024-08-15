@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct OMDB_API {
+    static let KEY = "1abef8c2"
+    
+    static let URL = "http://www.omdbapi.com/?"
+}

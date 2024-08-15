@@ -7,12 +7,19 @@
 
 import SwiftUI
 
-struct ScreenInformation: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+struct ScreenInformation {
+    
+    static let shared  = ScreenInformation()
+    
+    private var screenHeight = UIScreen.main.bounds.height
+    private var screenWidth = UIScreen.main.bounds.width
+    
+    func getScreenHeight() -> CGFloat {
+        return screenHeight
     }
-}
-
-#Preview {
-    ScreenInformation()
+    
+    func getScreenWidth() -> CGFloat {
+        return screenWidth
+    }
+    
 }
